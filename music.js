@@ -47,7 +47,9 @@ function handleServerResponse()
 {
 	if(xmlHttp.readyState == 4 && xmlHttp.status == 200) 
 	{
-		alert(xmlHttp.responseText);
+		var data=xmlHttp.responseText;
+		var jsonResponse = JSON.parse(data);
+		alert(jsonResponse["msg"]);
 	}
 }
 
