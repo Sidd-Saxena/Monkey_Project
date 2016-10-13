@@ -2,15 +2,16 @@
     <head>
         <title>Welcome to the World of Music</title>
     </head>
+    <script type="text/javascript" src="music.js"></script>
     <body background="music.jpg" style="
     background-size: cover;
     background-repeat: NO-REPEAT;">
         <h1>Enter Azkaban</h1>
         <form name="login">
-            Username<input type="text" name="userid"/><br><br>
-            Password<input type="password" name="pswrd"/><br><br>
-            <input type="button" onclick="check(this.form)" value="Login"/>
-            <input type="reset" value="Cancel"/><br><br>
+            Username<input type="text" id="username"/><br><br>
+            Password<input type="password" id="password"/><br><br>
+            <input type="button" onclick=authenticateAccount() value="Login" />
+            <input type="reset" value="Cancel" /><br><br>
             <a href="new_account.html">Create Account</a><br>
         </form>
     </body>
