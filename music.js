@@ -129,11 +129,14 @@ function handleServerResponse_findall()
 {
 	if(xmlHttp.readyState == 4 && xmlHttp.status == 200) 
 	{
+		var members=new Array();
 		var data=xmlHttp.responseText;
 		var jsonResponse = JSON.parse(data);
-		//var name = jsonResponse["_id"];
-		//alert("reached");
-		alert(data);
+		for (i in jsonResponse)
+		{
+  			members[i] = ("name: " +jsonResponse[i].name +"  band: "+ jsonResponse[i].band +"  instrument: "+ jsonResponse[i].instrument);
+		}
+		alert(members.join("\n"));
 	}
 }
 
