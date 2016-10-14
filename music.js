@@ -1,15 +1,13 @@
 var xmlHttp = createXmlHttpRequestObject();
 var token ;
 var access_token;
-handleServerResponse_auth();
-
 
 function createXmlHttpRequestObject(){
 	var xmlHttp;
 
 	if (window.ActiveXobject){
 		try{
-			xmlHttp =  new ActiveXObject("Microsoft.XMLHTTP");
+			xmlHttp =  new ActiveXObject("Microsoft.XMLHTTP"); //error handling for Internet Explorer
 		}catch(e){
 			xmlHttp = false;
 		}
@@ -135,7 +133,7 @@ function handleServerResponse_findall()
 		var jsonResponse = JSON.parse(data);
 		//var name = jsonResponse["_id"];
 		//alert("reached");
-		alert();
+		alert(data);
 	}
 }
 
@@ -150,7 +148,7 @@ function addMembers()
 		band_member = document.getElementById("band_add").value;
 		instru_member = document.getElementById("instru_add").value;
 		var params = JSON.stringify({name:name_member, band:band_member,instrument:instru_member})
-		token = sessionStorage.access_token;
+		token = sessionStorage.access_token;  //use session storrage instead of local to erase token after session ends
 		xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 		xmlHttp.setRequestHeader("Authorization", token);
 		xmlHttp.onreadystatechange = handleServerResponse_add;
