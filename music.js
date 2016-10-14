@@ -113,7 +113,7 @@ if (xmlHttp.readyState == 0 || xmlHttp.readyState== 4 )
 		token = sessionStorage.access_token;
 		xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 		xmlHttp.setRequestHeader("Authorization", token);
-		xmlHttp.setRequestHeader("cache-control", "no-cache");
+		xmlHttp.setRequestHeader("cache-control", "no-cache"); //need to add this to avoid status error 304
 		xmlHttp.onreadystatechange = handleServerResponse_findall;
 		xmlHttp.send(null);
 	}
@@ -134,5 +134,37 @@ function handleServerResponse_findall()
 		//var name = jsonResponse["_id"];
 		//alert("reached");
 		alert();
+	}
+}
+
+
+function addMembers()
+{
+	if (xmlHttp.readyState == 0 || xmlHttp.readyState== 4 )
+	{
+		var url = "https://musician.herokuapp.com/musicians";
+		xmlHttp.open("POST",url,true);
+		name_member = document.getElementById("name_add").value;
+		band_member = document.getElementById("band_add").value;
+		instru_member = document.getElementById("instru_add").value;
+		var params = JSON.stringify({name:name_member, band:band_member,instrument:instru_member})
+		token = sessionStorage.access_token;
+		xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		xmlHttp.setRequestHeader("Authorization", token);
+		xmlHttp.onreadystatechange = handleServerResponse_add;
+		xmlHttp.send(null);
+	}
+	else
+	{
+		setTimeout('addMembers()',1000);
+	}
+}
+
+
+function handleServerResponse_add()
+{
+	if(xmlHttp.readyState == 4 && xmlHttp.status == 200) 
+	{
+		alert("member successfully added ");
 	}
 }

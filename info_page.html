@@ -7,8 +7,14 @@
     background-size: cover;
     background-repeat: NO-REPEAT;">
         <h1> Welcome to the Musical World of Azkaban</h1>
-        <form name="login">
-            <input type="button" onclick=viewMembers() value="View all Members" />
-        </form>
+            <form name="login">
+                <font color=blue>
+                <input type="button" onclick=viewMembers() value="View all Members" /> <br><br><br><br>
+                Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="name_add"/><br><br>
+                Band &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="band_add"/><br><br>
+                Instrument&nbsp;<input type="text" id="instru_add"/><br><br>
+                <input type="button" onclick=addMembers() value="Add a new Member" /><br><br><br><br>
+                </font>
+            </form>
     </body>
 </html>
