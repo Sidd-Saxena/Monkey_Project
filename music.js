@@ -98,6 +98,8 @@ function handleServerResponse_auth()
 		}
 		else if (result == false)
 		{
+			document.getElementById('username').value='';
+			document.getElementById('password').value='';
 			alert(jsonResponse["msg"]);
 		}
 	}
@@ -165,6 +167,9 @@ function handleServerResponse_add()
 {
 	if(xmlHttp.readyState == 4 && xmlHttp.status == 200) 
 	{
+		document.getElementById('name_add').value='';
+		document.getElementById('band_add').value='';
+		document.getElementById('instru_add').value='';
 		alert("member successfully added ");
 	}
 }
