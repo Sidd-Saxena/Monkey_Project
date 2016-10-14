@@ -91,7 +91,7 @@ function handleServerResponse_auth()
 		var jsonResponse = JSON.parse(data);
 		var result = jsonResponse["success"];
 		token = jsonResponse["token"];
-		localStorage.access_token = token;
+		sessionStorage.access_token = token;
 		if (result == true)
 		{
 			open("info_page.html",'_self');
@@ -110,9 +110,10 @@ if (xmlHttp.readyState == 0 || xmlHttp.readyState== 4 )
 	{
 		var url = "https://musician.herokuapp.com/musicians";
 		xmlHttp.open("GET",url,true);
-		token = localStorage.access_token;
+		token = sessionStorage.access_token;
 		xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 		xmlHttp.setRequestHeader("Authorization", token);
+		xmlHttp.setRequestHeader("cache-control", "no-cache");
 		xmlHttp.onreadystatechange = handleServerResponse_findall;
 		xmlHttp.send(null);
 	}
@@ -130,6 +131,8 @@ function handleServerResponse_findall()
 	{
 		var data=xmlHttp.responseText;
 		var jsonResponse = JSON.parse(data);
-		alert("reached");
+		//var name = jsonResponse["_id"];
+		//alert("reached");
+		alert();
 	}
 }
